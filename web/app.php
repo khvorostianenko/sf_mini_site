@@ -16,6 +16,9 @@ $kernel->loadClassCache();
 // When using the HttpCache, you need to call the method in your front controller instead of relying on the configuration parameter
 //Request::enableHttpMethodParameterOverride();
 $request = Request::createFromGlobals();
+// Тут уже находится шаблон и все данные с БД
 $response = $kernel->handle($request);
+// отправляем пользователю
 $response->send();
+// очищаем память, закрывает соединение с БД
 $kernel->terminate($request, $response);
