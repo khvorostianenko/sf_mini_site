@@ -3,5 +3,49 @@
 {% block title %}Symfony mini site{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Page:index page</h1>
+    <h1>Последние новости</h1>
+
+    {% for post in posts %}
+        <article>
+            <h2><a href="{{ path('post', {id: post.id}) }}">{{ post.getTitle() }}</a></h2>
+
+            <div class="row">
+                <div class="col-sm-6 col-md-6">
+                    <span class="glyphicon glyphicon-folder-open"></span> &nbsp;<a href="#">CATEGORY_NAME</a>
+                    &nbsp;&nbsp;<span class="glyphicon glyphicon-bookmark"></span> <a href="#">TAG_1</a>, <a href="#">TAG_2</a>, <a href="#">TAG_3</a>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <span class="glyphicon glyphicon-pencil"></span> <a href="singlepost.html#comments">0 COMMENTS_SECTION</a>
+                    &nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span> {{ post.getCreatedAt()|date('F j, Y g:i A') }}
+                </div>
+            </div>
+
+            <hr>
+
+            <img src="http://placehold.it/900x300" class="img-responsive">
+
+            <br />
+
+            <p class="lead">{{ post.getContent() }}</p>
+
+            <p class="text-right">
+                <a href="#">
+                    Читать дальше...
+                </a>
+            </p>
+
+            <hr>
+        </article>
+    {% else %}
+        <li>Сообщений не найдено</li>
+    {% endfor %}
+
+
+
+    <ul class="pager">
+        <li class="previous"><a href="#">&larr; Туда</a></li>
+        <li class="next"><a href="#">Сюда &rarr;</a></li>
+    </ul>
+
 {% endblock %}
+

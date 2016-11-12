@@ -8,8 +8,9 @@ class PageController extends Controller
 {
     public function indexAction()
     {
+        $posts = [];
         return $this->render('BlogBundle:Page:index.html.twig', array(
-            // ...
+            'posts' => $posts
         ));
     }
 

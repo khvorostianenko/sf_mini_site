@@ -1,0 +1,26 @@
+BlogBundle\Entity\News:
+    type: entity
+    table: null
+    repositoryClass: BlogBundle\Repository\NewsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        content:
+            type: string
+            length: 255
+        createdAt:
+            type: datetime
+            column: created_at
+    lifecycleCallbacks: {  }
+
+    oneToMany:
+        relations:
+            targetEntity: News_to_category
+            mappedBy: news
