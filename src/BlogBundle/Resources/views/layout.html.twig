@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Mikhail">
+    <title>{% block title %}Symfony mini site{% endblock %}</title>
+    <!-- Bootstrap CSS file -->
+
+    <!-- Bootstrap CSS file -->
+    <link href="/bundles/blog/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="/bundles/blog/css/blog.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<!-- Header (Main navbar) -->
+{{ include('BlogBundle::Blocks/navbar.html.twig') }}
+
+<!-- Body -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+
+            {% block body %}{% endblock %}
+
+        </div>
+        <div class="col-md-4">
+
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+    <footer>
+        <div class="container">
+            <hr />
+            <p class="text-center">Symfony mini site</p>
+        </div>
+    </footer>
+
+<!-- Jquery and Bootstrap Script files -->
+    <script src="/bundles/blog/js/jquery-3.1.1.min.js"></script>
+    <script src="/bundles/blog/js/bootstrap.min.js"></script>
+    </body>
+</html>
