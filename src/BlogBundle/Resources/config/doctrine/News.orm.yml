@@ -19,11 +19,3 @@ BlogBundle\Entity\News:
             type: datetime
             column: created_at
     lifecycleCallbacks: {  }
-
-    oneToMany:
-        relations:
-            targetEntity: News_to_category
-            mappedBy: news
-        comments:
-            targetEntity: Comment
-            mappedBy: news

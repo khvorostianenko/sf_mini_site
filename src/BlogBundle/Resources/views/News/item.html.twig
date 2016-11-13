@@ -3,5 +3,6 @@
 {% block title %}BlogBundle:News:item{% endblock %}
 
 {% block body %}
-<h1>{{ news.title }}</h1>
+    <h1>{{ news.title }}</h1>
+    <p>{{ news.content| raw }}</p>
 {% endblock %}
