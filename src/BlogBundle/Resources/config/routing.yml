@@ -14,11 +14,6 @@ about:
     path:     /about
     defaults: { _controller: BlogBundle:Page:about }
 
-news:
-    path: /news
-    defaults: { _controller: BlogBundle:Page:about }
-
-news:
+item:
     path:     /news/{id}
     defaults: { _controller: BlogBundle:News:item }
-
