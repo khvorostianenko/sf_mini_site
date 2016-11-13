@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Последние новости</h1>
 
-    {% for post in posts %}
+    {% for article in news %}
         <article>
-            <h2><a href="{{ path('post', {id: post.id}) }}">{{ post.getTitle() }}</a></h2>
+            <h2><a href="{{ path('news', {id: article.id}) }}">{{ article.getTitle() }}</a></h2>
 
             <div class="row">
                 <div class="col-sm-6 col-md-6">
@@ -16,21 +16,21 @@
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <span class="glyphicon glyphicon-pencil"></span> <a href="singlepost.html#comments">0 COMMENTS_SECTION</a>
-                    &nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span> {{ post.getCreatedAt()|date('F j, Y g:i A') }}
+                    &nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span> {{ article.getCreatedAt()|date('F j, Y g:i A') }}
                 </div>
             </div>
 
             <hr>
 
-            <img src="http://placehold.it/900x300" class="img-responsive">
+            {#<img src="http://placehold.it/900x300" class="img-responsive">#}
 
             <br />
 
-            <p class="lead">{{ post.getContent() }}</p>
+            <p class="lead">{{ article.getContent()|slice(0, 1400)|raw }}</p>
 
             <p class="text-right">
                 <a href="#">
-                    Читать дальше...
+                    Перейти к статье...
                 </a>
             </p>
 

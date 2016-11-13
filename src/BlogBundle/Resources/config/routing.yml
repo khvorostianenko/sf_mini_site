@@ -1,3 +1,7 @@
+blog_comment:
+    resource: "@BlogBundle/Resources/config/routing/comment.yml"
+    prefix:   /comment
+
 index:
     path:     /
     defaults: { _controller: BlogBundle:Page:index }
@@ -9,3 +13,12 @@ contacts:
 about:
     path:     /about
     defaults: { _controller: BlogBundle:Page:about }
+
+news:
+    path: /news
+    defaults: { _controller: BlogBundle:Page:about }
+
+news:
+    path:     /news/{id}
+    defaults: { _controller: BlogBundle:News:item }
+

@@ -8,9 +8,11 @@ class PageController extends Controller
 {
     public function indexAction()
     {
-        $posts = [];
+        $repository = $this->getDoctrine()->getRepository('BlogBundle:News');
+        $news = $repository->findAll();
+
         return $this->render('BlogBundle:Page:index.html.twig', array(
-            'posts' => $posts
+            'news' => $news
         ));
     }
 

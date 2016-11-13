@@ -24,3 +24,6 @@ BlogBundle\Entity\News:
         relations:
             targetEntity: News_to_category
             mappedBy: news
+        comments:
+            targetEntity: Comment
+            mappedBy: news
