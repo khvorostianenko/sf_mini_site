@@ -22,3 +22,11 @@ BlogBundle\Entity\News:
             type: integer
             column: category_id
     lifecycleCallbacks: {  }
+
+    manyToOne:
+        categories:
+            targetEntity: Category
+            inversedBy: news
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
