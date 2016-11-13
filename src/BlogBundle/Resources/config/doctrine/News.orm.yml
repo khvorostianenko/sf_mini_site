@@ -13,8 +13,8 @@ BlogBundle\Entity\News:
             type: string
             length: 255
         content:
-            type: string
-            length: 255
+            type: text
+            length: 65535
         createdAt:
             type: datetime
             column: created_at
