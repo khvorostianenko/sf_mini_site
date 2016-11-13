@@ -5,6 +5,12 @@
 {% block body %}
     <h1>{{ news.title }}</h1>
     <p>{{ news.content| raw }}</p>
-    <p>Категория новости:</p>
-    <p>{{ news.categories.name }}</p>
+    <p>Категория новости: {{ news.categories.name }}</p>
+
+    {% for comment in  news.comments %}
+        {#{{ dump(comment) }}#}
+        {{ comment.message }}
+    {% else %}
+        <p>Сообщений нет</p>
+    {% endfor %}
 {% endblock %}

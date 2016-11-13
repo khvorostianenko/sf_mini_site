@@ -80,5 +80,33 @@ class Comment
     {
         return $this->message;
     }
-}
+    /**
+     * @var \BlogBundle\Entity\News
+     */
+    private $news;
 
+
+    /**
+     * Set news
+     *
+     * @param \BlogBundle\Entity\News $news
+     *
+     * @return Comment
+     */
+    public function setNews(\BlogBundle\Entity\News $news = null)
+    {
+        $this->news = $news;
+
+        return $this;
+    }
+
+    /**
+     * Get news
+     *
+     * @return \BlogBundle\Entity\News
+     */
+    public function getNews()
+    {
+        return $this->news;
+    }
+}

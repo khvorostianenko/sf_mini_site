@@ -259,4 +259,33 @@ class News
     {
         return $this->comments;
     }
+    /**
+     * @var \BlogBundle\Entity\Category
+     */
+    private $categories;
+
+
+    /**
+     * Set categories
+     *
+     * @param \BlogBundle\Entity\Category $categories
+     *
+     * @return News
+     */
+    public function setCategories(\BlogBundle\Entity\Category $categories = null)
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \BlogBundle\Entity\Category
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
 }

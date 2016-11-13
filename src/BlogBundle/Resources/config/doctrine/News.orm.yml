@@ -30,3 +30,7 @@ BlogBundle\Entity\News:
             joinColumn:
                 name: category_id
                 referencedColumnName: id
+    oneToMany:
+        comments:
+            targetEntity: Comment
+            mappedBy: news
