@@ -288,4 +288,43 @@ class News
     {
         return $this->categories;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tags;
+
+
+    /**
+     * Add tag
+     *
+     * @param \BlogBundle\Entity\Tag $tag
+     *
+     * @return News
+     */
+    public function addTag(\BlogBundle\Entity\Tag $tag)
+    {
+        $this->tags[] = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Remove tag
+     *
+     * @param \BlogBundle\Entity\Tag $tag
+     */
+    public function removeTag(\BlogBundle\Entity\Tag $tag)
+    {
+        $this->tags->removeElement($tag);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
 }

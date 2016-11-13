@@ -34,3 +34,6 @@ BlogBundle\Entity\News:
         comments:
             targetEntity: Comment
             mappedBy: news
+        tags:
+            targetEntity: Tag
+            mappedBy: news

@@ -3,9 +3,9 @@
 namespace BlogBundle\Entity;
 
 /**
- * Comment
+ * Tag
  */
-class Comment
+class Tag
 {
     /**
      * @var int
@@ -20,7 +20,7 @@ class Comment
     /**
      * @var string
      */
-    private $message;
+    private $tag;
 
 
     /**
@@ -38,7 +38,7 @@ class Comment
      *
      * @param integer $newsId
      *
-     * @return Comment
+     * @return Tag
      */
     public function setNewsId($newsId)
     {
@@ -58,27 +58,27 @@ class Comment
     }
 
     /**
-     * Set message
+     * Set tag
      *
-     * @param string $message
+     * @param string $tag
      *
-     * @return Comment
+     * @return Tag
      */
-    public function setMessage($message)
+    public function setTag($tag)
     {
-        $this->message = $message;
+        $this->tag = $tag;
 
         return $this;
     }
 
     /**
-     * Get message
+     * Get tag
      *
      * @return string
      */
-    public function getMessage()
+    public function getTag()
     {
-        return $this->message;
+        return $this->tag;
     }
     /**
      * @var \BlogBundle\Entity\News
@@ -91,7 +91,7 @@ class Comment
      *
      * @param \BlogBundle\Entity\News $news
      *
-     * @return Comment
+     * @return Tag
      */
     public function setNews(\BlogBundle\Entity\News $news = null)
     {
