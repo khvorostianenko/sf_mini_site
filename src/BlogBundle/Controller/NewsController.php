@@ -22,7 +22,7 @@ class NewsController extends Controller
 
         $form = $this->createForm(CommentType::class, $comment, array(
             'action' => $this->generateUrl('save_comment'),
-            'method' => 'GET',
+            'method' => 'POST',
         ));
 
         return $this->render('BlogBundle:News:item.html.twig', array(
