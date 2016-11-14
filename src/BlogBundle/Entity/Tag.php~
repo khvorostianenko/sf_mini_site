@@ -80,5 +80,33 @@ class Tag
     {
         return $this->tag;
     }
-}
+    /**
+     * @var \BlogBundle\Entity\News
+     */
+    private $news;
 
+
+    /**
+     * Set news
+     *
+     * @param \BlogBundle\Entity\News $news
+     *
+     * @return Tag
+     */
+    public function setNews(\BlogBundle\Entity\News $news = null)
+    {
+        $this->news = $news;
+
+        return $this;
+    }
+
+    /**
+     * Get news
+     *
+     * @return \BlogBundle\Entity\News
+     */
+    public function getNews()
+    {
+        return $this->news;
+    }
+}

@@ -15,6 +15,9 @@ BlogBundle\Entity\Comment:
         message:
             type: string
             length: 255
+        nickname:
+            type: string
+            length: 255
     lifecycleCallbacks: {  }
     manyToOne:
         news:

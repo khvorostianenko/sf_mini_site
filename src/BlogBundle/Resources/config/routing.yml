@@ -1,7 +1,3 @@
-blog_comment:
-    resource: "@BlogBundle/Resources/config/routing/comment.yml"
-    prefix:   /comment
-
 index:
     path:     /
     defaults: { _controller: BlogBundle:Page:index }
@@ -17,3 +13,7 @@ about:
 item:
     path:     /news/{id}
     defaults: { _controller: BlogBundle:News:item }
+
+save_comment:
+    path:     /save/comment
+    defaults: { _controller: BlogBundle:News:saveComment }

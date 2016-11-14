@@ -109,4 +109,33 @@ class Comment
     {
         return $this->news;
     }
+    /**
+     * @var string
+     */
+    private $nickname;
+
+
+    /**
+     * Set nickname
+     *
+     * @param string $nickname
+     *
+     * @return Comment
+     */
+    public function setNickname($nickname)
+    {
+        $this->nickname = $nickname;
+
+        return $this;
+    }
+
+    /**
+     * Get nickname
+     *
+     * @return string
+     */
+    public function getNickname()
+    {
+        return $this->nickname;
+    }
 }
