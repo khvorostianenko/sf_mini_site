@@ -6,6 +6,7 @@ use BlogBundle\Entity\Comment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use BlogBundle\Form\CommentType;
+use Symfony\Component\HttpFoundation\Request;
 
 class NewsController extends Controller
 {
@@ -30,8 +31,8 @@ class NewsController extends Controller
         ));
     }
 
-    public function saveCommentAction(){
-        return new Response($_POST);
+    public function saveCommentAction(Request $request){
+        return new Response(json_encode($request));
     }
 
 
