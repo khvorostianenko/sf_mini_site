@@ -8,8 +8,9 @@
     <p>Категория новости: {{ news.categories.name }}</p>
 
     <br>
-    <h4>Оставьте свой комментарий</h4>
-    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    <h4 class="col-md-offset-1">Оставьте свой комментарий</h4>
+    {{ form_start(form, {'attr': {'class': 'form-horizontal col-md-offset-1'}}) }}
+        {{ form_widget(form.newsId) }}
         <div class="form-group">
             {#<label for="nickname" class="col-sm-2 control-label">Представьтесь</label>#}
             <div class="col-sm-5">
