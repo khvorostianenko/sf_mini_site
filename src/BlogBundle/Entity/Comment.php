@@ -2,25 +2,52 @@
 
 namespace BlogBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Comment
+ *
+ * @ORM\Table(name="comment")
+ * @ORM\Entity(repositoryClass="BlogBundle\Repository\CommentRepository")
  */
 class Comment
 {
+
+    /**
+     * @ORM\ManyToOne(targetEntity="News", inversedBy="comments")
+     * @ORM\JoinColumn(name="news_id", referencedColumnName="id")
+     */
+    private $news;
+    
     /**
      * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var int
+     *
+     * @ORM\Column(name="news_id", type="integer")
      */
     private $newsId;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="message", type="string", length=255)
      */
     private $message;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nickname", type="string", length=255)
+     */
+    private $nickname;
 
 
     /**
@@ -80,40 +107,6 @@ class Comment
     {
         return $this->message;
     }
-    /**
-     * @var \BlogBundle\Entity\News
-     */
-    private $news;
-
-
-    /**
-     * Set news
-     *
-     * @param \BlogBundle\Entity\News $news
-     *
-     * @return Comment
-     */
-    public function setNews(\BlogBundle\Entity\News $news = null)
-    {
-        $this->news = $news;
-
-        return $this;
-    }
-
-    /**
-     * Get news
-     *
-     * @return \BlogBundle\Entity\News
-     */
-    public function getNews()
-    {
-        return $this->news;
-    }
-    /**
-     * @var string
-     */
-    private $nickname;
-
 
     /**
      * Set nickname
@@ -137,5 +130,29 @@ class Comment
     public function getNickname()
     {
         return $this->nickname;
+    }
+
+    /**
+     * Set news
+     *
+     * @param \BlogBundle\Entity\News $news
+     *
+     * @return Comment
+     */
+    public function setNews(\BlogBundle\Entity\News $news = null)
+    {
+        $this->news = $news;
+
+        return $this;
+    }
+
+    /**
+     * Get news
+     *
+     * @return \BlogBundle\Entity\News
+     */
+    public function getNews()
+    {
+        return $this->news;
     }
 }

@@ -10,5 +10,4 @@ namespace BlogBundle\Repository;
  */
 class NewsRepository extends \Doctrine\ORM\EntityRepository
 {
-  
 }

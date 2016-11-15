@@ -2,23 +2,43 @@
 
 namespace BlogBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Tag
+ *
+ * @ORM\Table(name="tag")
+ * @ORM\Entity(repositoryClass="BlogBundle\Repository\TagRepository")
  */
 class Tag
 {
+
+    /**
+     * @ORM\ManyToOne(targetEntity="News", inversedBy="tags")
+     * @ORM\JoinColumn(name="news_id", referencedColumnName="id")
+     */
+    private $news;
+    
     /**
      * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var int
+     *
+     * @ORM\Column(name="news_id", type="integer")
      */
     private $newsId;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="tag", type="string", length=255)
      */
     private $tag;
 
@@ -80,11 +100,6 @@ class Tag
     {
         return $this->tag;
     }
-    /**
-     * @var \BlogBundle\Entity\News
-     */
-    private $news;
-
 
     /**
      * Set news

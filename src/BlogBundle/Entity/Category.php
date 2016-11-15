@@ -2,18 +2,35 @@
 
 namespace BlogBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Category
+ *
+ * @ORM\Table(name="category")
+ * @ORM\Entity(repositoryClass="BlogBundle\Repository\CategoryRepository")
  */
 class Category
 {
     /**
+     * @ORM\OneToMany(targetEntity="News", mappedBy="categories")
+     */
+    private $news;
+
+
+    /**
      * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
@@ -51,11 +68,6 @@ class Category
     {
         return $this->name;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $news;
-
     /**
      * Constructor
      */

@@ -2,44 +2,69 @@
 
 namespace BlogBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * News
+ *
+ * @ORM\Table(name="news")
+ * @ORM\Entity(repositoryClass="BlogBundle\Repository\NewsRepository")
  */
 class News
 {
     /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="news")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $categories;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="news")
+     */
+    private $comments;    
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Tag", mappedBy="news")
+     */
+    private $tags;
+
+    /**
      * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="content", type="text")
      */
     private $content;
-    
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var int
+     *
+     * @ORM\Column(name="category_id", type="integer")
      */
-    private $relations;
-    
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->relations = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    private $categoryId;
+
 
     /**
      * Get id
@@ -98,7 +123,6 @@ class News
     {
         return $this->content;
     }
-    
 
     /**
      * Set createdAt
@@ -125,106 +149,60 @@ class News
     }
 
     /**
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getRelations()
-    {
-        return $this->relations;
-    }
-
-    private $categoryId;
-
-    /**
-     * @param \Doctrine\Common\Collections\Collection $relations
-     */
-    public function setRelations($relations)
-    {
-        $this->relations = $relations;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getcategoryId()
-    {
-        return $this->categoryId;
-    }
-
-    /**
-     * @param mixed $categoryId
+     * Set categoryId
+     *
+     * @param integer $categoryId
+     *
+     * @return News
      */
     public function setCategoryId($categoryId)
     {
         $this->categoryId = $categoryId;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $newses;
-
-
-    /**
-     * Add relation
-     *
-     * @param \BlogBundle\Entity\News_to_category $relation
-     *
-     * @return News
-     */
-    public function addRelation(\BlogBundle\Entity\News_to_category $relation)
-    {
-        $this->relations[] = $relation;
 
         return $this;
     }
 
     /**
-     * Remove relation
+     * Get categoryId
      *
-     * @param \BlogBundle\Entity\News_to_category $relation
+     * @return int
      */
-    public function removeRelation(\BlogBundle\Entity\News_to_category $relation)
+    public function getCategoryId()
     {
-        $this->relations->removeElement($relation);
+        return $this->categoryId;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add newse
+     * Set categories
      *
-     * @param \BlogBundle\Entity\Comment $newse
+     * @param \BlogBundle\Entity\Category $categories
      *
      * @return News
      */
-    public function addNewse(\BlogBundle\Entity\Comment $newse)
+    public function setCategories(\BlogBundle\Entity\Category $categories = null)
     {
-        $this->newses[] = $newse;
+        $this->categories = $categories;
 
         return $this;
     }
 
     /**
-     * Remove newse
+     * Get categories
      *
-     * @param \BlogBundle\Entity\Comment $newse
+     * @return \BlogBundle\Entity\Category
      */
-    public function removeNewse(\BlogBundle\Entity\Comment $newse)
+    public function getCategories()
     {
-        $this->newses->removeElement($newse);
+        return $this->categories;
     }
-
-    /**
-     * Get newses
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getNewses()
-    {
-        return $this->newses;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $comments;
-
 
     /**
      * Add comment
@@ -259,40 +237,6 @@ class News
     {
         return $this->comments;
     }
-    /**
-     * @var \BlogBundle\Entity\Category
-     */
-    private $categories;
-
-
-    /**
-     * Set categories
-     *
-     * @param \BlogBundle\Entity\Category $categories
-     *
-     * @return News
-     */
-    public function setCategories(\BlogBundle\Entity\Category $categories = null)
-    {
-        $this->categories = $categories;
-
-        return $this;
-    }
-
-    /**
-     * Get categories
-     *
-     * @return \BlogBundle\Entity\Category
-     */
-    public function getCategories()
-    {
-        return $this->categories;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $tags;
-
 
     /**
      * Add tag
