@@ -32,8 +32,10 @@ class NewsController extends Controller
     }
 
     public function saveCommentAction(Request $request){
-//        var_dump($_POST);
-//        die;
+
+        $formData = $request->request->get('blogbundle_comment');
+        $newsId = $formData['newsId'];
+        
         $comment = new Comment();
         $form = $this->createForm('BlogBundle\Form\CommentType', $comment);
         $form->handleRequest($request);
@@ -42,13 +44,13 @@ class NewsController extends Controller
             ->getDoctrine()
             ->getManager()
             ->getRepository('BlogBundle:News');
-        $news = $repository->find($_POST['blogbundle_comment']['newsId']);
+        $news = $repository->find($newsId);
         $comment->setNews($news);
 
         $manager = $this->getDoctrine()->getEntityManager();
         $manager->persist($comment);
         $manager->flush();
 
-        return $this->redirectToRoute('item', ['id' => $_POST['blogbundle_comment']['newsId']]);
+        return $this->redirectToRoute('item', ['id' => $newsId]);
     }
 }
