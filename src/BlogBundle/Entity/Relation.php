@@ -3,9 +3,9 @@
 namespace BlogBundle\Entity;
 
 /**
- * Tag
+ * Relation
  */
-class Tag
+class Relation
 {
     /**
      * @var int
@@ -18,9 +18,9 @@ class Tag
     private $newsId;
 
     /**
-     * @var string
+     * @var int
      */
-    private $tag;
+    private $tagId;
 
 
     /**
@@ -38,7 +38,7 @@ class Tag
      *
      * @param integer $newsId
      *
-     * @return Tag
+     * @return Relation
      */
     public function setNewsId($newsId)
     {
@@ -58,27 +58,27 @@ class Tag
     }
 
     /**
-     * Set tag
+     * Set tagId
      *
-     * @param string $tag
+     * @param integer $tagId
      *
-     * @return Tag
+     * @return Relation
      */
-    public function setTag($tag)
+    public function setTagId($tagId)
     {
-        $this->tag = $tag;
+        $this->tagId = $tagId;
 
         return $this;
     }
 
     /**
-     * Get tag
+     * Get tagId
      *
-     * @return string
+     * @return int
      */
-    public function getTag()
+    public function getTagId()
     {
-        return $this->tag;
+        return $this->tagId;
     }
     /**
      * @var \BlogBundle\Entity\News
@@ -91,7 +91,7 @@ class Tag
      *
      * @param \BlogBundle\Entity\News $news
      *
-     * @return Tag
+     * @return Relation
      */
     public function setNews(\BlogBundle\Entity\News $news = null)
     {
@@ -110,49 +110,32 @@ class Tag
         return $this->news;
     }
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \BlogBundle\Entity\Tag
      */
-    private $relations;
+    private $tag;
+
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->relations = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add relation
+     * Set tag
      *
-     * @param \BlogBundle\Entity\Relation $relation
+     * @param \BlogBundle\Entity\Tag $tag
      *
-     * @return Tag
+     * @return Relation
      */
-    public function addRelation(\BlogBundle\Entity\Relation $relation)
+    public function setTag(\BlogBundle\Entity\Tag $tag = null)
     {
-        $this->relations[] = $relation;
+        $this->tag = $tag;
 
         return $this;
     }
 
     /**
-     * Remove relation
+     * Get tag
      *
-     * @param \BlogBundle\Entity\Relation $relation
+     * @return \BlogBundle\Entity\Tag
      */
-    public function removeRelation(\BlogBundle\Entity\Relation $relation)
+    public function getTag()
     {
-        $this->relations->removeElement($relation);
-    }
-
-    /**
-     * Get relations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getRelations()
-    {
-        return $this->relations;
+        return $this->tag;
     }
 }

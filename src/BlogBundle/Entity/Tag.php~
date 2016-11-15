@@ -109,4 +109,50 @@ class Tag
     {
         return $this->news;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $relations;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->relations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add relation
+     *
+     * @param \BlogBundle\Entity\Relation $relation
+     *
+     * @return Tag
+     */
+    public function addRelation(\BlogBundle\Entity\Relation $relation)
+    {
+        $this->relations[] = $relation;
+
+        return $this;
+    }
+
+    /**
+     * Remove relation
+     *
+     * @param \BlogBundle\Entity\Relation $relation
+     */
+    public function removeRelation(\BlogBundle\Entity\Relation $relation)
+    {
+        $this->relations->removeElement($relation);
+    }
+
+    /**
+     * Get relations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRelations()
+    {
+        return $this->relations;
+    }
 }

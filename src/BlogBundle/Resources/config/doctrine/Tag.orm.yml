@@ -16,10 +16,7 @@ BlogBundle\Entity\Tag:
             type: string
             length: 255
     lifecycleCallbacks: {  }
-    manyToOne:
-        news:
-            targetEntity: News
-            inversedBy: tags
-            joinColumn:
-                name: news_id
-                referencedColumnName: id
+    oneToMany:
+        relations:
+            targetEntity: Relation
+            mappedBy: tag

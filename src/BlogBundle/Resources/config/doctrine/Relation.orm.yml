@@ -1,0 +1,32 @@
+BlogBundle\Entity\Relation:
+    type: entity
+    table: null
+    repositoryClass: BlogBundle\Repository\RelationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        newsId:
+            type: integer
+            column: news_id
+        tagId:
+            type: integer
+            column: tag_id
+    lifecycleCallbacks: {  }
+    manyToOne:
+        news:
+            targetEntity: News
+            inversedBy: relations
+            joinColumn:
+                name: news_id
+                referencedColumnName: id
+        tag:
+            targetEntity: Tag
+            inversedBy: relations
+            joinColumn:
+                name: tag_id
+                referencedColumnName: id
+
