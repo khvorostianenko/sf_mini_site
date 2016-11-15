@@ -12,14 +12,11 @@
     {{ form_start(form, {'attr': {'class': 'form-horizontal col-md-offset-1'}}) }}
         {{ form_widget(form.newsId) }}
         <div class="form-group">
-            {#<label for="nickname" class="col-sm-2 control-label">Представьтесь</label>#}
             <div class="col-sm-5">
                 {{ form_widget(form.nickname, {'attr': {'class': 'form-control', 'placeholder': 'Укажите имя(nickname)'}}) }}
-                {#<input name="nickname" type="text" class="form-control" id="nickname" placeholder="Имя">#}
             </div>
         </div>
         <div class="form-group">
-            {#<label for="comment" class="col-sm-2 control-label">Комментарий</label>#}
             <div class="col-sm-5">
                 {{ form_widget(form.message, {'attr': {'class': 'form-control', 'placeholder': 'Комментарий'}}) }}
             </div>
