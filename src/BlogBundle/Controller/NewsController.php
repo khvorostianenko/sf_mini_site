@@ -47,10 +47,13 @@ class NewsController extends Controller
         $news = $repository->find($newsId);
         $comment->setNews($news);
 
-        $manager = $this->getDoctrine()->getEntityManager();
-        $manager->persist($comment);
-        $manager->flush();
 
+        if($form->isSubmitted() && $form->isValid() ){
+            $manager = $this->getDoctrine()->getEntityManager();
+            $manager->persist($comment);
+            $manager->flush();
+        }
+        
         return $this->redirectToRoute('item', ['id' => $newsId]);
     }
 }
